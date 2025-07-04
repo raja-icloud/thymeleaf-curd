@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Form</title>
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <div class="container pt-5">
+      <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-header text-center">
+               <span th:if="${user.id != null}"> Update </span> 
+               <span th:if="${user.id == null}"> Create </span> 
+               User Form
+            </div>
+            <form th:action="@{/users/save}" method="post">
+              <div class="card-body">
+                <div th:if="${user.id != null}" class="form-group">
+                  <label for="id" class="form-label">User Id</label>
+                  <input
+                    type="text"
+                    th:field="*{user.id}"
+                    id="id"
+                    class="form-control"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="name" class="form-label">Full name</label>
+                  <input
+                    type="text"
+                    th:field="*{user.name}"
+                    id="name"
+                    class="form-control"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="email" class="form-label">Email Address</label>
+                  <input
+                    type="email"
+                    th:field="*{user.email}"
+                    id="email"
+                    class="form-control"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="email" class="form-label"></label>
+                  <button class="btn btn-sm bg-success form-control">
+                    SUBMIT
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="col-md-4"></div>
+      </div>
+    </div>
+  </body>
+</html>

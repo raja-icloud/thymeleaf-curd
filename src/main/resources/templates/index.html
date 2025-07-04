@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index Page</title>
+     <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+    <h1 th:text="${user.name}"></h1>
+
+    <input type="text" th:value="${user.name}">
+    <br />
+
+     <input  type="text" th:field="*{user.name}" />
+
+    <div th:if="user.address != null">Address is available</div>
+
+    <div th:switch="${user.address}">
+        <p th:case="'trichy'">Given is TRICHY</p>
+        <p th:case="'chennai'">Given is Chennai</p>
+    </div>
+
+    <img th:src="${user.image}" alt="" srcset="">
+
+    <ul>
+        <li th:each="contact : ${user.contacts}">
+            <span th:text="${contact}"></span>
+        </li>
+    </ul>
+
+    <a th:href="@{/users/list}">User List</a>
+</body>
+</html>
